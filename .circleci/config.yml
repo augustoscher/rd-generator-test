@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/project
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: yarn --frozen-lockfile
+      - run:
+          name: Run Tests
+          command: yarn test
+      - run:
+          name: Run ESLint
+          command: yarn lint
